@@ -3,21 +3,26 @@ const buttons = document.querySelectorAll(".btn");
 
 let expression = "";
 
-buttons.forEach((button) =>{
-    button.addEventListener("click",()=>{
-        const value = button.dataset.value ;
+//Tokenizer
 
-        if(value === "C"){
-            expression = "";
-            display.textContent = "0";
-            return;
-        }
-        if(value === "="){
-            //Operations
-            return;
-        }
-        expression += value ;
-        display.textContent = expression ;
+function tokenize(expr){
+    const tokens = [];
+    let currentNumber = "";
 
-    });
-});
+    for(let char of expr){
+        if(!isNaN(char) || char === "."){
+            currentNumber += char;
+        }else{
+            if(currentNumber!== ""){
+                tokens.push(Number(currentNumber));
+                currentNumber="";
+            }
+            tokens.push(char);
+        }
+    }
+    if (currentNumber !== "") {
+    tokens.push(Number(currentNumber));
+    }
+
+    return tokens;
+}
