@@ -4,7 +4,6 @@ const buttons = document.querySelectorAll(".btn");
 let expression = "";
 
 //Tokenizer
-
 function tokenize(expr){
     const tokens = [];
     let currentNumber = "";
