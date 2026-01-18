@@ -83,12 +83,19 @@ function clearAll(){
 }
 function calculate(){
     try{
-        const result = eval(currentNumber);
+        if( currentNumber === "") return ;
+        const tokens = tokenize(currentNumber);
+        const result = evaluateTokens(tokens);
+
+        if(result === Infinity || isNaN(result)){
+            throw new Error("Math Error");
+        }
+
         currentNumber = result.toString();
         updateDisplay();
     }catch{
-        currentNumber = "";
-        display.textContent = "error";
+        currentNumber = "Error";
+        updateDisplay();
     }
 }
 //Keyboard support
