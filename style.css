@@ -87,3 +87,6 @@ body{
   grid-column: span 2;
   border-radius: 32px;
 }
+.backspace {
+    font-size: 1.2rem;
+}
