@@ -61,6 +61,7 @@ buttons.forEach(button =>{
 
 function handleInput(value){
     if(value === "C") clearAll();
+    else if(value === "DEL") deleteLast();
     else if(value === "=") calculate();
     else appendValue(value);
 }
@@ -103,7 +104,7 @@ document.addEventListener("keydown",(e)=>{
     ){
         handleInput(key);
     }
-    if(key=== "Enter"){
+    if(key === "Enter"){
         e.preventDefault();
         handleInput("=");
     }
@@ -119,4 +120,5 @@ function deleteLast(){
     currentNumber = currentNumber.slice(0,-1);
     updateDisplay();
 }
+
 
